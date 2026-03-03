@@ -78,13 +78,13 @@ void Game::main_loop_words(){
 		render.stats(get_time(), get_wpm());
 	}
 	duration = get_time();
-	usleep(16000); // ~60 FPS
 }
 
 void Game::main_loop_time(){
 	int index = 0;
 	set_start_time();
-	while (get_time() < 10) {
+	while (duration < 10) {
+		duration = get_time();
 		if (key_pressed()){
 			char c = getchar();
 			handle_input(c);
@@ -92,5 +92,4 @@ void Game::main_loop_time(){
 		}
 		render.stats(10 - get_time(), get_wpm());
 	}
-	duration = get_time();
 }

@@ -24,7 +24,7 @@ void Player::type(char c, bool correct){
 }
 
 void Player::backspace(){
-	if (index > 0 && consecutive_dels < 5){
+	if (!player_input.empty() && consecutive_dels < 5){
 		index --;
 		player_input.pop_back();
 		rest_str.insert(rest_str.begin(), org_str[index]);
