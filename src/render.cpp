@@ -20,10 +20,20 @@ void Render::center(int filas, int columnas){
 	std::cout << "\033[" << filas << ";" << columnas << "H";
 }
 
-void Render::update(const Player& player){
-	get_center();
+void Render::new_words(Player& player){
+	while (player.rest_str.size() < columnas - 10 && player.words < 10){
+		player.gen_word();
+	}
+
+	if (player.player_input.size() >= columnas - 5){
+		player.del_char();
+	}
+}
+
+void Render::update(Player& player){
 	clear();
 	center(filas, columnas);
+	new_words(player);
 	std::cout << player.rest_str; 
 	center(filas, columnas - player.player_input.size());
 	

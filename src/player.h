@@ -14,12 +14,18 @@ class Player{
 	std::string org_str;
 	std::string rest_str;
 	std::vector<FormatedChar> player_input;
+	int words;
 	int errors;
 
-	Player(const std::string& str): org_str(str), rest_str(str), errors(0) {}
+	Player(): errors(0), words(0) {
+		gen_word(true);
+	}
 
 	void type(char c, bool correct);
 	void backspace(int index);
+	void count_words();
+	void gen_word(bool first = false);
+	void del_char();
 };
 
 #endif

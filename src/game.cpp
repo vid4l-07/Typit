@@ -25,6 +25,7 @@ void Game::end() {
     std::cout << "\n\nTiempo: " << duration << " segundos\n";
 	std::cout << "Errores: " << player.errors << " errores\n";
 	std::cout << "Precision: " << accuracy << " %\n";
+	std::cout << "Palabras: " << player.words << "\n";
 }
 
 void Game::main_loop(){

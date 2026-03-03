@@ -5,7 +5,7 @@
 
 int main(){
     termios oldt;
-	Player player("Escribe esto");
+	Player player;
 	Render render(oldt);
 	
 	Game game(player, render);

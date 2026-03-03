@@ -1,4 +1,6 @@
+#include <random>
 #include <string>
+#include <sstream>
 #include <vector>
 #include "player.h"
 
@@ -20,4 +22,27 @@ void Player::type(char c, bool correct){
 void Player::backspace(int index){
 	player_input.pop_back();
 	rest_str.insert(rest_str.begin(), org_str[index]);
+}
+
+void Player::gen_word(bool first){
+	std::vector<std::string> all_words = {"hola", "adios", "que", "tal", "ayer", "comi", "carne", "con", "pescado"};
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, all_words.size() - 1);
+
+    int indice_aleatorio = dis(gen);
+	std::string word;
+	if (first){
+		word = all_words[indice_aleatorio];
+	} else{
+		word = " " + all_words[indice_aleatorio];
+	}
+	rest_str.append(word);
+	org_str.append(word);
+	words ++;
+}
+
+void Player::del_char(){
+	player_input.erase(player_input.begin());
 }
