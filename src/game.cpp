@@ -49,28 +49,25 @@ void Game::end() {
 	std::cout << "Errores: " << player.errors << " errores\n";
 }
 
-void Game::main_loop_words(){
-	int index = 0;
+void Game::handle_input(char c){
+	if (c < 32) return;
+	if (c == ' ') player.words_typed ++;
 
+	if (c == 127){
+		player.backspace();
+	} else if (c == player.rest_str[0]){
+		player.type(c, true);
+	} else{
+		player.type(c, false);
+	}
+}
+
+void Game::main_loop_words(){
 	set_start_time();
-	while (index < player.org_str.size()) {
+	while (player.index < player.org_str.size()) {
 		if (key_pressed()){
 			char c = getchar();
-
-			if (c < 32) continue;
-			if (c == 127){
-				if (index > 0){
-					index --;
-					player.backspace(index);
-				}
-			} else if (c == player.rest_str[0]){
-				player.type(c, true);
-				index ++;
-
-			} else{
-				player.type(c, false);
-				index ++;
-			}
+			handle_input(c);
 			render.update(player);
 		}
 		render.stats(get_time());
@@ -85,23 +82,7 @@ void Game::main_loop_time(){
 	while (get_time() < 10) {
 		if (key_pressed()){
 			char c = getchar();
-			if (c < 32) continue;
-			if (c == ' ') player.words_typed ++;
-			if (c == 127){
-				if (index > 0){
-					index --;
-					player.backspace(index);
-				}
-
-			} else if (c == player.rest_str[0]){
-				player.type(c, true);
-				index ++;
-
-			} else{
-				player.type(c, false);
-				index ++;
-
-			}
+			handle_input(c);
 			render.update(player);
 		}
 		render.stats(10 - get_time());

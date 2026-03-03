@@ -14,13 +14,17 @@ void Player::type(char c, bool correct){
 		errors ++;
 	}
 
+	index ++;
 	player_input.push_back(typedchar);
 	rest_str.erase(0,1);
 }
 
-void Player::backspace(int index){
-	player_input.pop_back();
-	rest_str.insert(rest_str.begin(), org_str[index]);
+void Player::backspace(){
+	if (index > 0){
+		index --;
+		player_input.pop_back();
+		rest_str.insert(rest_str.begin(), org_str[index]);
+	}
 }
 
 void Player::gen_word(bool first){
