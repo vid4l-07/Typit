@@ -42,8 +42,9 @@ void Render::update(Player& player){
 	center(filas, columnas);
 	new_words(player);
 	std::string copy_str = player.rest_str;
+
 	if (!player.rest_str.empty()) {
-		std::cout << "\033[100;38;5;232m" << player.rest_str.front() << "\033[0m" << player.rest_str.substr(1);
+		std::cout << "\033[7m" << player.rest_str.front() << "\033[0m" << player.rest_str.substr(1);
 	}
 	center(filas, columnas - player.player_input.size());
 	
