@@ -1,6 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
-
+#pragma once
 #include <string>
 #include <vector>
 
@@ -18,8 +16,9 @@ class Player{
 	int errors;
 	int index;
 	int consecutive_dels;
+	std::string len; // en english, es spanish
 
-	Player(): errors(0), words_typed(0), index(0), consecutive_dels(0) {
+	Player(std::string lenguage): len(lenguage), errors(0), words_typed(0), index(0), consecutive_dels(0) {
 		gen_word(true);
 	}
 
@@ -29,5 +28,3 @@ class Player{
 	void gen_word(bool first = false);
 	void del_char();
 };
-
-#endif

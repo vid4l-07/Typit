@@ -1,6 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
-
+#pragma once
 #include <iostream>
 #include <chrono>
 #include "player.h"
@@ -30,4 +28,3 @@ class Game{
 	double get_wpm();
 };
 
-#endif

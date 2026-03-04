@@ -1,6 +1,4 @@
-#ifndef RENDER_H
-#define RENDER_H
-
+#pragma once
 #include <termios.h>
 #include <string>
 #include "player.h"
@@ -25,5 +23,3 @@ class Render{
 	void stats(int time, int wpm);
 	void update(Player& player);
 };
-
-#endif

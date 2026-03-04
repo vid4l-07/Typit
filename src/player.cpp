@@ -1,7 +1,11 @@
+#include <array>
 #include <random>
 #include <string>
+#include <string_view>
 #include <vector>
 #include "player.h"
+#include "words_es.h" // all_words array
+#include "words_en.h"
 
 void Player::type(char c, bool correct){
 	FormatedChar typedchar;
@@ -33,18 +37,23 @@ void Player::backspace(){
 }
 
 void Player::gen_word(bool first){
-	std::vector<std::string> all_words = {"hola", "adios", "que", "tal", "ayer", "comi", "carne", "con", "pescado"};
+	const std::array<std::string_view, 1000>* all_words = nullptr;
+	if (len == "es") {
+		all_words = &all_words_es;
+	}else{
+		all_words = &all_words_en;
+	} 
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, all_words.size() - 1);
+    std::uniform_int_distribution<> dis(0, (*all_words).size() - 1);
 
     int indice_aleatorio = dis(gen);
 	std::string word;
 	if (first){
-		word = all_words[indice_aleatorio];
+		word = (*all_words).at(indice_aleatorio);
 	} else{
-		word = " " + all_words[indice_aleatorio];
+		word = " " + std::string((*all_words).at(indice_aleatorio));
 	}
 	rest_str.append(word);
 	org_str.append(word);

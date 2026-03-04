@@ -1,4 +1,5 @@
 #include <csignal>
+#include <string>
 #include <termios.h>
 #include "player.h"
 #include "game.h"
@@ -12,13 +13,17 @@ void ctrlc_handler(int signal) {
 }
 
 int main(){
-    termios oldt;
-	Player player;
-	Render render(oldt);
-	
 	char mode;
+	std::string len;
 	std::cout << "Modo: ";
 	std::cin >> mode;
+	std::cout << "Idioma: ";
+	std::cin >> len;
+
+    termios oldt;
+	Player player(len);
+	Render render(oldt);
+
 	Game game(player, render, mode);
 
 	game_point = &game;
