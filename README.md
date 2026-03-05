@@ -16,15 +16,13 @@ Aplicacion de terminal en c++ para linux diseñada para mejorar la velocidad de 
 
 - Escritura en terminal con seguimiento de WPM (palabras por minuto) en tiempo real
 - Soporte en español e ingles
-- Generacion de palabras aleatorias infinitas
-- Medicion de errores y precision
-- Modo a contra reloj con palabras infinitas y modo con maximo de palabras
+- Generación de palabras aleatorias infinitas
+- Medición de errores y precisión
+- Modo contra reloj con palabras infinitas y modo con máximo de palabras
 
 ---
 
-## Instalación y uso
-
-### Pasos de instalación
+## Instalación
 
 ```bash
 # Clonar el repositorio
@@ -40,12 +38,22 @@ make
 # Ejecutar
 ./typit
 ```
+---
 
-### Contribuciones
+## Uso
 
-Las contribuciones son siempre bienvenidas! Si encuentras algun error o quieres contribuir en alguna mejora puedes:
+En el menú:
+- Navegación con las flechas derecha e izquierda.
+- Modificar números como tiempo o palabras con flechas arriba y abajo.
+- Enter para continuar.
+
+Durante la partida:
+- Puedes borrar un máximo de 5 caracteres para corregir errores, pero estos no se restarán.
+
+## Contribuciones
+
+Las contribuciones son siempre bienvenidas! Si encuentras algún error o quieres contribuir en alguna mejora puedes:
 - Abrir un issue en este repositorio
 - Hacer un fork del repositorio
 - Abrir un Pull Request.
 - O mandarme un correo a <a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>
-
