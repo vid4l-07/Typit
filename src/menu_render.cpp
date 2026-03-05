@@ -6,11 +6,6 @@ void Menu_render::center(int rows, int columns){
 	std::cout << "\033[" << rows << ";" << columns << "H";
 }
 
-void Menu_render::clear(){
-	std::cout << "\033[2J";
-	std::cout << "\033[?25l"; // hide cursor
-}
-
 void Menu_render::draw_options(const std::vector<Option>& options){
 	int padding_top = 8;
 	int padding_col = 5;
@@ -47,6 +42,12 @@ void Menu_render::draw_options(const std::vector<Option>& options){
 			std::cout << options.at(i).str;
 		}
 	}
+}
+
+void Menu_render::draw_number(int selection){
+	int padding_top = 5;
+	center(title_line + padding_top, columns);
+	std::cout << selection;
 }
 
 void Menu_render::draw_title(const std::string& title){
@@ -101,10 +102,16 @@ void Menu_render::gen_border(){
 	}
 }
 
-void Menu_render::render(const std::string& title, const std::vector<Option>& options){
-	clear();
+void Menu_render::render_options(const std::string& title, const std::vector<Option>& options){
+	term.clear();
 	draw_border();
 	draw_title(title);
 	draw_options(options);
 }
 
+void Menu_render::render_number(const std::string& title, int selection){
+	term.clear();
+	draw_border();
+	draw_title(title);
+	draw_number(selection);
+}

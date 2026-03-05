@@ -32,18 +32,24 @@ int main(){
 	Menu menu_mode("Mode", mode, term);
 	int mode_select = menu_mode.start();
 	char mode_str;
-
+	
+	int max;
+	std::vector<std::string> empty = {};
 	if (mode_select == 0){
 		mode_str = 't';
+		Menu menu_max("time", empty, term);
+		max = menu_max.start();
 	} else {
 		mode_str = 'w';
+		Menu menu_max("Words", empty, term);
+		max = menu_max.start();
 	}
 	
 
 	Player player(lang_str);
 	Render render(term);
 
-	Game game(player, render, term, mode_str);
+	Game game(player, render, term, mode_str, max);
 
 	game_point = &game;
 

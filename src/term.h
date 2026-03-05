@@ -5,12 +5,14 @@
 #include <iostream>
 
 enum Key{
+	KEY_UP = 65,
+	KEY_DOWN = 66,
+	KEY_RIGHT = 67,
     KEY_LEFT = 68,
-    KEY_RIGHT = 67,
     KEY_BACKSPACE = 127,
 };
 
-class Terminal {  // mover aqui clear y ocultar cursor en clear
+class Terminal { 
 	private:
 	termios oldt;
 
@@ -33,7 +35,7 @@ class Terminal {  // mover aqui clear y ocultar cursor en clear
 	bool key_pressed(){
 		timeval tv; 
 		tv.tv_sec = 0;
-		tv.tv_usec = 0;  // delay
+		tv.tv_usec = 16000;  // delay
 		fd_set fds;
 		FD_ZERO(&fds);
 		FD_SET(STDIN_FILENO, &fds);
@@ -46,6 +48,17 @@ class Terminal {  // mover aqui clear y ocultar cursor en clear
 
 	char read_char(){
 		return getchar();
+		// char c = 0;  
+		// ssize_t n = read(STDIN_FILENO, &c, 1);
+		// if (n == 1) {
+		// 	return c;
+		// } else {
+		// 	return 0;
+		// }
+	}
+
+	void clear(){
+		std::cout << "\033[2J";
 	}
 
 	void get_center(int& rows, int& columns) {

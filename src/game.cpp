@@ -44,8 +44,8 @@ void Game::main_loop_words(){
 		if (term.key_pressed()){
 			char c = term.read_char();
 			handle_input(c);
-			render.update(player);
 		}
+		render.update(player);
 		render.stats(get_time(), get_wpm());
 	}
 	duration = get_time();
@@ -54,21 +54,21 @@ void Game::main_loop_words(){
 void Game::main_loop_time(){
 	int index = 0;
 	set_start_time();
-	while (duration < 10) {
+	while (duration < max) {
 		duration = get_time();
 		if (term.key_pressed()){
 			char c = term.read_char();
 			handle_input(c);
-			render.update(player);
 		}
-		render.stats(10 - get_time(), get_wpm());
+		render.update(player);
+		render.stats(max - get_time(), get_wpm());
 	}
 }
 
 void Game::start() {
-	render.clear();
+	term.clear();
 	if (mode == 'w'){
-		render.max_words = 15;
+		render.max_words = max;
 		render.update(player);
 		main_loop_words();
 	} else {
@@ -79,7 +79,7 @@ void Game::start() {
 }
 
 void Game::end() {
-	render.clear();
+	term.clear();
 	double accuracy = (double(player.org_str.size()) - player.errors) / double(player.org_str.size()) * 100;
 	std::cout << "\n\n";
 	std::cout << "Tiempo: " << get_time() << " segundos\n";

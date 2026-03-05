@@ -2,11 +2,6 @@
 #include <string>
 #include "render.h"
 
-void Render::clear(){
-	std::cout << "\033[2J";
-	std::cout << "\033[?25l"; // hide cursor
-}
-
 void Render::center(int filas, int columnas){
 	std::cout << "\033[" << filas << ";" << columnas << "H";
 }
@@ -29,7 +24,6 @@ void Render::stats(int time, int wpm){
 }
 
 void Render::update(Player& player){
-	clear();
 	center(filas, columnas);
 	new_words(player);
 	std::string copy_str = player.rest_str;
@@ -50,6 +44,10 @@ void Render::update(Player& player){
 		}
 	}
 	std::cout << format_str;
+	center(filas, columnas + player.rest_str.size());
+	std::cout << "\033[K";  // clear right of the words
+	center(filas, columnas - player.player_input.size() - 1);
+	std::cout << "\033[1K";  // clear left of the words
 	center(filas, columnas);
 }
 

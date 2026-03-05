@@ -501,7 +501,7 @@ constexpr std::array<std::string_view, 1000> all_words_es = {
     "bano",
     "siento",
     "dejo",
-    "le",
+    "lee",
     "decirme",
     "habia",
     "tres",

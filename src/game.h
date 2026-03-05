@@ -10,6 +10,7 @@ class Game{
 	Player& player;
 	Render& render;
 	char mode;
+	int max;
 	std::chrono::time_point<std::chrono::high_resolution_clock> inicio;
 
 	void main_loop_words();
@@ -18,8 +19,8 @@ class Game{
 	public:
 	double duration;
 
-	Game(Player& player_param, Render& render_param, Terminal& term_param, char mode_param): player(player_param), render(render_param),
-	term(term_param), mode(mode_param) {}
+	Game(Player& player_param, Render& render_param, Terminal& term_param, char mode_param, int max_param): player(player_param), 
+	render(render_param), term(term_param), mode(mode_param), max(max_param) {}
 
 	void handle_input(char c);
 	void start(); // w = words, t = time

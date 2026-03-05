@@ -24,11 +24,24 @@ bool Menu::handle_input(char c){
 		term.read_char();
 		char dir = term.read_char();
 
-		if (dir == KEY_RIGHT) {
-			select(true);
-		} 
-		else if (dir == KEY_LEFT) {
-			select(false);
+		if (mode == 0){
+			if (dir == KEY_RIGHT) {
+				select(true);
+			} 
+			else if (dir == KEY_LEFT) {
+				select(false);
+			}
+		} else {
+			if (dir == KEY_UP) {
+				if (current_selection < 60){
+					current_selection ++;
+				}
+			} 
+			else if (dir == KEY_DOWN) {
+				if (current_selection > 5){
+					current_selection --;
+				}
+			}
 		}
 	}
 	return true;
@@ -37,16 +50,26 @@ bool Menu::handle_input(char c){
 
 int Menu::start(){
 	bool runing = true;
-	menu_render.render(title, options);
+	if (mode == 0){
+		menu_render.render_options(title, options);
+	} else {
+		menu_render.render_number(title, current_selection);
+	}
+
 	while (runing){
 		char c = term.read_char();
 		runing = handle_input(c);
-		menu_render.render(title, options);
+		if (mode == 0){
+			menu_render.render_options(title, options);
+		} else {
+			menu_render.render_number(title, current_selection);
+		}
 	}
+
 	end();
 	return current_selection;
 }
 
 void Menu::end(){
-	menu_render.clear();
+	term.clear();
 }

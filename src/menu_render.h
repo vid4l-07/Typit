@@ -24,15 +24,16 @@ class Menu_render {
 	void draw_border();
 	void draw_title(const std::string& title);
 	void draw_options(const std::vector<Option>& options);
+	void draw_number(int selection);
 
 	public:
-	void clear();
 	int start_col;
 	int start_row;
 	int end_col;
 	int end_row;
 	void center(int rows, int columns);
-	void render(const std::string& title, const std::vector<Option>& options);
+	void render_options(const std::string& title, const std::vector<Option>& options);
+	void render_number(const std::string& title, int selection);
 	Menu_render(Terminal& term_param): term(term_param){
 		term.get_center(rows, columns);
 		start_col = columns - columns / 2;
