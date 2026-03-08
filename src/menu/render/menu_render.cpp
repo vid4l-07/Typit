@@ -51,10 +51,10 @@ void MenuRender::gen_border(){
 	border.clear();
 	std::string horizontal = "─";
 	std::string vertical = "│";
-	std::string top_right = "┐";
-	std::string top_left = "┌";
-	std::string bottom_left = "└";
-	std::string bottom_right = "┘\n";
+	std::string top_right = "╮";
+	std::string top_left = "╭";
+	std::string bottom_left = "╰";
+	std::string bottom_right = "╯\n";
 
 	move_cursor(start_row, 0);
 	for (int i = start_row; i < end_row; i++ ){
