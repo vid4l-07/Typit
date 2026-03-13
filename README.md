@@ -2,18 +2,16 @@
 
 # Typit
 
-C++ terminal typing speed tester for windows and linux.
+Terminal-based typing speed tester for windows and linux.
 
 <img src=".github/screenshot.gif" alt="descripcion"  width="700">
 
 </div>
 
----
-
 ## Features
 
 - Support for Windows and Linux.
-- Terminal typing with real-time WPM (words per minute) tracking.
+- Typing with real-time WPM (words per minute) tracking.
 - English and Spanish language support.
 - Infinite random word generation.
 - Error and accuracy measurement.
@@ -39,8 +37,6 @@ cmake --build .
 ./typit
 ```
 
----
-
 ## Usage
 
 In the menu: 
@@ -50,6 +46,8 @@ In the menu:
 
 During the game: 
 - You can delete up to 5 characters to correct mistakes, but these will not be subtracted.
+
+---
 
 ## Contributions
 
