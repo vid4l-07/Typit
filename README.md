@@ -4,7 +4,7 @@
 
 C++ terminal typing speed tester for windows and linux.
 
-<img src=".github/screenshot.gif" alt="descripcion"  width="600">
+<img src=".github/screenshot.gif" alt="descripcion"  width="700">
 
 </div>
 
