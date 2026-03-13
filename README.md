@@ -17,8 +17,6 @@ Terminal-based typing speed tester for windows and linux.
 - Error and accuracy measurement.
 - Time attack mode with infinite words and mode with a maximum number of words.
 
----
-
 ## Installation
 
 ``` bash
