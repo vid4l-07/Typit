@@ -2,7 +2,7 @@
 #include <iostream>
 #include "render.h"
 #include "player.h"
-#include "Game.h"
+#include "game.h"
 #include "terms/term.h"
 
 void Game::set_start_time(){
