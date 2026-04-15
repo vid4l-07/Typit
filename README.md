@@ -10,7 +10,7 @@ Terminal-based typing speed tester for windows and linux.
 
 ## Features
 
-- Support for Windows and Linux.
+- Support for Windows, Linux and Mac.
 - Typing with real-time WPM (words per minute) tracking.
 - English and Spanish language support.
 - Infinite random word generation.
